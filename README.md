@@ -4,8 +4,9 @@ Follow below steps in the terminal on macOS
 
 Steps to build the project:
 1. Get the project in local system.
-2. Install pip if not present using this link https://pip.pypa.io/en/stable/installation/
-3. Run shell script present in the repo to install pyinstaller and build an executable : sh install.sh
+2. (Optional) You can install virtual environment and to run this code in virtual env follow instructions here : https://docs.python.org/3/library/venv.html
+3. Install pip if not present using this link https://pip.pypa.io/en/stable/installation/
+4. Run shell script present in the repo to install pyinstaller and build an executable : sh install.sh
 
 Once these steps are followed you should see a executable in submission folder with name gfm-recurring
 
