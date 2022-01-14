@@ -14,7 +14,7 @@ class GfmDao:
     :param limit_amt limit amount donor would be paying
     :return None
     """
-    def add_donor(self, donor_name, limit_amt):
+    def add_donor(self, donor_name, limit_amt) -> None:
         donor = Donor(donor_name, int(limit_amt[1:]), 0)
         self.donor_data[donor_name] = donor
 
@@ -23,7 +23,7 @@ class GfmDao:
     :param campaign_name name of the campaign to be added
     :return None
     """
-    def add_campaign(self, campaign_name):
+    def add_campaign(self, campaign_name) -> None:
         campaign = Campaign(campaign_name, 0)
         self.campaign_data[campaign_name] = campaign
 
@@ -31,13 +31,13 @@ class GfmDao:
     This method returns all the donors
     :return dictionary of donors
     """
-    def get_all_donors(self):
+    def get_all_donors(self) -> dict:
         return self.donor_data
 
     """ 
     This method returns all the campaigns
     :return dictionary of campaigns
     """
-    def get_all_campaigns(self):
+    def get_all_campaigns(self) -> dict:
         return self.campaign_data
 

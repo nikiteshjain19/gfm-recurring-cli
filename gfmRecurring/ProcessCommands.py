@@ -1,3 +1,6 @@
+from gfmRecurring.model.Campaign import Campaign
+from gfmRecurring.model.Donor import Donor
+
 
 class ProcessCommands:
 
@@ -12,7 +15,7 @@ class ProcessCommands:
     :param command_list list of all commands submitted
     :return None
     """
-    def parse_and_process_commands(self, command_list: list):
+    def parse_and_process_commands(self, command_list: list) -> None:
         for i in command_list:
             command = i.strip('\n').split(" ")
             if command[0] == "Add":
@@ -36,7 +39,7 @@ class ProcessCommands:
     :param donation amount being donated
     :return None
     """
-    def process_donation(self, donor_name, campaign_name, donation):
+    def process_donation(self, donor_name, campaign_name, donation) -> None:
         donor, campaign = self.check_return_if_donor_and_campaign_present(donor_name, campaign_name)
         if not donor.donation_limit_meet:
             donor.total_donation = donor.total_donation + int(donation[1:])
@@ -50,9 +53,9 @@ class ProcessCommands:
     it throws error if the donor is not already added
     :param donor_name name of the donor
     :param campaign_name name of the campaign to which donation is being made
-    :return None
+    :return Donor, Campaign
     """
-    def check_return_if_donor_and_campaign_present(self, donor_name, campaign_name):
+    def check_return_if_donor_and_campaign_present(self, donor_name, campaign_name) -> (Donor, Campaign):
         all_donors = self.gfm_dao.get_all_donors()
         all_campaigns = self.gfm_dao.get_all_campaigns()
         if donor_name not in all_donors:
@@ -65,7 +68,7 @@ class ProcessCommands:
     This method prints stats
     :return None
     """
-    def print_stats(self):
+    def print_stats(self) -> None:
         all_donors = self.gfm_dao.get_all_donors()
         all_campaigns = self.gfm_dao.get_all_campaigns()
         print("Donors:")
