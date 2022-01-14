@@ -8,7 +8,7 @@ Steps to build the project:
 3. Install pip if not present using this link https://pip.pypa.io/en/stable/installation/
 4. Run shell script present in the repo to install pyinstaller and build an executable : sh install.sh
 
-Once these steps are followed you should see a executable in submission folder with name gfm-recurring
+Once these steps are followed you should see a executable in submission folder with name gfm-recurring, if there is any issue with building executable I have added executable in executable_submission folder.
 
 Steps to run the project:
 1. Create a input text file with the commands, sample text file is present in the repository
