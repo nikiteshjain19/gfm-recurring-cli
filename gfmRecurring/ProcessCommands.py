@@ -41,7 +41,7 @@ class ProcessCommands:
         print("Donors:")
         for key, val in all_donors.items():
             print(key + ": Total:$" + str(val.total_donation) + " Average:$" + str(val.total_donation/val.number_of_donations))
-        print("Campaigns:")
+        print("\nCampaigns:")
         for key, val in all_campaigns.items():
             print(key + ": Total:$" + str(val.total_donation))
 
