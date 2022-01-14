@@ -8,11 +8,13 @@ class ProcessCommands:
         for i in command_list:
             command = i.strip('\n').split(" ")
             if command[0] == "Add":
-                if command[1] == "Donor":
+                if command[1] == "Donor" and len(command) == 4:
                     self.gfm_dao.add_donor(command[2], command[3])
-                elif command[1] == "Campaign":
+                elif command[1] == "Campaign" and len(command) == 3:
                     self.gfm_dao.add_campaign(command[2])
-            elif command[0] == "Donate":
+                else:
+                    raise ValueError("Commands not recognized")
+            elif command[0] == "Donate" and len(command) == 4:
                 self.process_donation(command[1], command[2], command[3])
             else:
                 raise ValueError("Commands not recognized")
@@ -39,9 +41,10 @@ class ProcessCommands:
         all_donors = self.gfm_dao.get_all_donors()
         all_campaigns = self.gfm_dao.get_all_campaigns()
         print("Donors:")
-        for key, val in all_donors.items():
-            print(key + ": Total:$" + str(val.total_donation) + " Average:$" + str(val.total_donation/val.number_of_donations))
-        print("Campaigns:")
-        for key, val in all_campaigns.items():
-            print(key + ": Total:$" + str(val.total_donation))
+        for key in sorted(all_donors):
+            print(key + ": Total:$" + str(all_donors.get(key).total_donation) + " Average:$" +
+                  str(all_donors.get(key).total_donation/all_donors.get(key).number_of_donations))
+        print("\nCampaigns:")
+        for key in sorted(all_campaigns):
+            print(key + ": Total:$" + str(all_campaigns.get(key).total_donation))
 

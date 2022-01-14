@@ -17,6 +17,3 @@ def main():
     process_commands.parse_and_process_commands(command_lines)
     process_commands.print_stats()
 
-
-if __name__ == '__main__':
-    main()

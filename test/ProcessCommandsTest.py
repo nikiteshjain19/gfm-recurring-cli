@@ -25,8 +25,15 @@ class ProcessCommandsTest(unittest.TestCase):
         mock_gfm_dao.add_campaign.assert_called()
         mock_gfm_dao.add_donor.assert_not_called()
 
-    def test_parse_throws_value_error(self):
+    def test_throws_value_error_for_wrong_operation(self):
         command_list = ["Delete Campaign SaveTheDogs"]
+        mock_gfm_dao = Mock()
+        process_commands = ProcessCommands(mock_gfm_dao)
+        with self.assertRaises(ValueError):
+            process_commands.parse_and_process_commands(command_list)
+
+    def test_throws_value_error_for_wrong_entity(self):
+        command_list = ["Add Hero SaveTheDogs"]
         mock_gfm_dao = Mock()
         process_commands = ProcessCommands(mock_gfm_dao)
         with self.assertRaises(ValueError):
