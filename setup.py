@@ -1,10 +1,10 @@
 from setuptools import setup
 setup(
-    name = 'helloworld-cli',
-    version = '0.1.0',
-    packages = ['helloworld'],
+    name = 'gfm-recurring-cli',
+    version = '0.2.0',
+    packages = ['gfmRecurring', 'gfmRecurring/model'],
     entry_points = {
         'console_scripts': [
-            'helloworld = helloworld.__main__:main'
+            'gfm-recurring = gfmRecurring.__main__:main'
         ]
     })
